@@ -1,0 +1,55 @@
+23-05-10 11:15:33.885 - INFO:   name: INCA_JPEG_test_template
+  suffix: None
+  model: INCA
+  scale: 2
+  crop_border: None
+  gpu_ids: [0]
+  datasets:[
+    test_5:[
+      name: val_DIV2K
+      mode: LQGT
+      dataroot_GT: D:\SAIN\datasets\DIV2K\DIV2K_valid_HR
+      phase: test
+      scale: 2
+      data_type: img
+    ]
+  ]
+  network:[
+    wave_type: harr
+    subnet: DBNet
+    in_nc: 3
+    out_nc: 3
+    e_blocks: 5
+    v_blocks: 3
+    scale: 2
+    gmm_components: 5
+    init: xavier
+  ]
+  train:[
+    use_diffcomp: True
+    use_realcomp: True
+    comp_format: JPEG
+    comp_quality: 75
+  ]
+  path:[
+    strict_load: True
+    pretrain_model: ../experiments/pretrained_models/SAINx2_JPEG.pth
+    root: D:\INCA
+    results_root: D:\INCA\results\INCA_JPEG_test_template
+    log: D:\INCA\results\INCA_JPEG_test_template
+  ]
+  is_train: False
+
+23-05-10 11:15:33.892 - INFO: Dataset [LQGTDataset - val_DIV2K] is created.
+23-05-10 11:15:33.893 - INFO: Number of test images in [val_DIV2K]: 100
+23-05-10 11:15:34.018 - INFO: Network structure: DataParallel - HarrNet, with parameters: 63
+23-05-10 11:15:34.019 - INFO: HarrNet(
+  (haar_operations): ModuleList(
+    (0): HaarDownsampling()
+  )
+  (gmm): GaussianMixture()
+)
+23-05-10 11:15:34.019 - INFO: Loading model from [../experiments/pretrained_models/SAINx2_JPEG.pth] ...
+23-05-10 11:15:34.032 - INFO: Model [INCA] is created.
+23-05-10 11:15:34.032 - INFO: 
+Testing [val_DIV2K]...

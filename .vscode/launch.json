@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug for SAIN",
+            "type": "python",
+            "request": "launch",
+            // "program": "${workspaceFolder}/codes/train.py",  "args": ["-opt", "options/train/train_INCA_JPEG_demo.yml"],
+            "program": "${workspaceFolder}/codes/test.py",  "args": ["-opt", "options/test/test_INCA_JPEG_demo.yml", "-format", "JPEG", "-qf", "90"],
+
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/codes"
+        }
+    ]
+}
