@@ -77,9 +77,10 @@ class BaseModel():
 
     def save_network(self, network, network_label, iter_label):
         save_filename = '{}_{}.pth'.format(iter_label, network_label)
+        save_dir = self.opt['path']['models']
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
         save_path = os.path.join(self.opt['path']['models'], save_filename)
-        if not os.path.exists(save_path):
-            os.makedirs(save_path)
         if isinstance(network, nn.DataParallel) or isinstance(network, DistributedDataParallel):
             network = network.module
         state_dict = network.state_dict()
@@ -107,7 +108,10 @@ class BaseModel():
         for o in self.optimizers:
             state['optimizers'].append(o.state_dict())
         save_filename = '{}.state'.format(iter_step)
-        save_path = os.path.join(self.opt['path']['training_state'], save_filename)
+        save_dir = self.opt['path']['training_state']
+        if not os.path.exists(save_dir):
+            os.makdirs(save_dir)
+        save_path = os.path.join(save_dir, save_filename)
         torch.save(state, save_path)
 
     def resume_training(self, resume_state):
