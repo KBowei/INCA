@@ -51,7 +51,8 @@ path:
   pretrain_model: ~
   strict_load: true
   resume_state: ~
-  models: /data/kangbw/models/JPEG_pre_editing/base
+  models: /data/kangbw/models/JPEG_pre_editing/base/model
+  training_state: /data/kangbw/models/JPEG_pre_editing/base/state
 
 
 #### training settings: learning rate scheme, loss
