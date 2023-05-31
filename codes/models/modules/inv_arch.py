@@ -134,11 +134,11 @@ class learn_wavelet(torch.nn.Module):
         batch_size = x.size()[0]
         channel_in = x.size()[1]
         if not rev:
-            if channel_in == 3:
-             # [b,3,h,w] -> [3b, 1, h, w] rgb2yuv
-                x = self.color_conversion(x)
-            else:
-                x = channel2batch(x, channel_in)
+#             if channel_in == 3:
+#              # [b,3,h,w] -> [3b, 1, h, w] rgb2yuv
+#                 x = self.color_conversion(x)
+#             else:
+            x = channel2batch(x, channel_in)
             # transform for rows
             L = x[:,:,0::2,:]
             H = x[:,:,1::2,:]
@@ -194,10 +194,10 @@ class learn_wavelet(torch.nn.Module):
             x[:, :, 0::2, :] = L
             x[:, :, 1::2, :] = H
             
-            if channel_in == 3:
-                x = self.inverse_color_conversion(torch.cat((x[0:batch_size], x[batch_size:2*batch_size], x[2*batch_size:3*batch_size]), dim=1))
-            else:
-                x = batch2channel(x, channel_in)
+#             if channel_in == 3:
+#                 x = self.inverse_color_conversion(torch.cat((x[0:batch_size], x[batch_size:2*batch_size], x[2*batch_size:3*batch_size]), dim=1))
+#             else:
+            x = batch2channel(x, channel_in)
         return x
 
 class SAINet(nn.Module):
