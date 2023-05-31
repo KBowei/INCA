@@ -321,7 +321,7 @@ class INCA(BaseModel):
 
     def optimize_parameters(self, step):
         self.optimizer.zero_grad()
-        self.input = self.real_H  # (b,c,h,w)
+        self.input = self.real_H * 255  # (b,c,h,w)
         # forward pass
         self.output = self.net(x=self.input)  # (b,c,h,w) -> (b,c*4,h//2,w//2)
         # mask high-frequence component
